@@ -12,4 +12,6 @@ Scaffold-DbContext "Server=.\SQLExpress;Database=Credit;Trusted_Connection=True;
 
 6) Create OnionArch.Api
 
-7) Create OnionArch.AngularApp
+7) Create OnionArch.AuthService
+
+8) Create OnionArch.AngularApp
