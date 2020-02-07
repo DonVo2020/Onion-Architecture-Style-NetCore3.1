@@ -1,0 +1,73 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="container" cols="2">
+    <mat-card-header class="card-heard">
+      <mat-card-title>{{ isEdit() }} Corporation</mat-card-title>
+    </mat-card-header>
+    <div class="controls-container">
+      <mat-form-field>
+        <input matInput formControlName="corpNo" placeholder="Corp. #" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="corpName" placeholder="Company" />
+        <mat-error>
+          <app-message-error [field]="form.controls.corpName" name="corpName"></app-message-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="street" placeholder="Street" />
+        <mat-error>
+          <app-message-error [field]="form.controls.street" name="street"></app-message-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="city" placeholder="City" />
+        <mat-error>
+          <app-message-error [field]="form.controls.city" name="city"></app-message-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="stateProv" placeholder="State or Province" />
+        <mat-error>
+          <app-message-error [field]="form.controls.stateProv" name="stateProv"></app-message-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="country" placeholder="Country" />
+        <mat-error>
+          <app-message-error [field]="form.controls.country" name="country"></app-message-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="phoneNo" placeholder="Phone Number" />
+        <mat-error>
+          <app-message-error [field]="form.controls.phoneNo" name="phoneNo"></app-message-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select formControlName="Region"
+                    id="Regions"
+                    placeholder="Region"
+                    (selectionChange)="regionSelectionChange($event)"
+                    [(value)]="selected">
+          <mat-option *ngFor="let Region of Regions | async" [value]="Region.regionNo">
+            {{ Region.regionName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <app-footer-form [nameForm]="form"
+                       [isFormEdit]="isFormEdit"
+                       (closeForm)="closeDialog()"
+                       (clearForm)="formClear()"
+                       (submitForm)="onSubmit()">
+      </app-footer-form>
+    </div>
+  </div>
+</form>

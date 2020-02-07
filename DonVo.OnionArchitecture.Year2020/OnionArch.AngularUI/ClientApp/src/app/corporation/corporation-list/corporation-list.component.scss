@@ -1,0 +1,25 @@
+.dashboard-card {
+  top: 5px;
+  right: 5px;
+}
+
+.full-width-table {
+  width: 98%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  margin: 5px;
+}
+
+.mat-paginator {
+  margin-left: 10px;
+  width: 98%;
+  height:30px;
+}
+
+.mat-form-field {
+  color: white;
+}
