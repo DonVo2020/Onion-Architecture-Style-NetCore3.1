@@ -1,0 +1,26 @@
+<div class="form-footer">
+  <button id="btnCloseModal"
+          mat-raised-button
+          type="button"
+          color="secundary"
+          (click)="closeFormFn()">
+    Close
+  </button>
+  <button id="btnLimparForm"
+          mat-raised-button
+          color="warn"
+          type="button"
+          [disabled]="!nameForm.dirty"
+          (click)="clearFormFn()"
+          *ngIf="!isFormEdit">
+    Clear
+  </button>
+  <button id="btn-save"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          matTooltipPosition="above"
+          [disabled]="!nameForm.valid">
+    Submit
+  </button>
+</div>

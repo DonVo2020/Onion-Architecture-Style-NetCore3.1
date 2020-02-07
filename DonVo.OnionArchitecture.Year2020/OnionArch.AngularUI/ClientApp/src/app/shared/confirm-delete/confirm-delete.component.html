@@ -1,0 +1,16 @@
+<mat-grid-list cols="1" row-height="100px">
+  <mat-card-header class="card-heard">
+    <mat-card-title>Delete {{ title }}</mat-card-title>
+  </mat-card-header>
+  <div class="controls-container">
+    <span>Really want to delete the item, there is no way to revert!</span>
+  </div>
+  <div class="form-footer">
+    <button mat-raised-button type="button" color="secundary" (click)="close()">
+      Close
+    </button>
+    <button id="btnDeleteConfirm" mat-raised-button color="warn" type="button" (click)="confirm()">
+      Delete
+    </button>
+  </div>
+</mat-grid-list>

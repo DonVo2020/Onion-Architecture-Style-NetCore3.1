@@ -1,0 +1,73 @@
+<mat-card class="dashboard-card">
+  <mat-form-field>
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Search">
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <a mat-raised-button color="primary" id="btnAddmember" (click)="openDialog()">
+    New Member
+  </a>
+  <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>LastName</th>
+      <td mat-cell *matCellDef="let row">{{row.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>FirstName</th>
+      <td mat-cell *matCellDef="let row">{{row.firstName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="regionNo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Region #</th>
+      <td mat-cell *matCellDef="let row">{{row.regionNo}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="street">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Street</th>
+      <td mat-cell *matCellDef="let row">{{row.street}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+      <td mat-cell *matCellDef="let row">{{row.city}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="stateProv">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+      <td mat-cell *matCellDef="let row">{{row.stateProv}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="phoneNo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+      <td mat-cell *matCellDef="let row">{{row.phoneNo}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="update">
+      <th mat-header-cell *matHeaderCellDef> Update </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="accent" (click)="openDialog(row)">
+          <mat-icon class="mat-18">system_update</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="warn" (click)="openDialogDelete(row)">
+          <mat-icon class="mat-18">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)" class="ripple"></tr>
+  </table>
+
+  <mat-paginator #paginator
+                 [length]="dataSource.data.length"
+                 [pageIndex]="0"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[10,25, 50, 100, 250]">
+  </mat-paginator>
+</mat-card>

@@ -1,0 +1,6 @@
+<ng-container *ngIf="field.hasError('required')">The field {{ name }} is required.</ng-container>
+<ng-container *ngIf="field.hasError('minlength')">
+  The minimum allowed is only {{ field.errors.minlength.requiredLength }}
+  {{ field.errors.minlength.actualLength }} .
+</ng-container>
+<ng-container *ngIf="field.hasError('maxlength')">The maximum allowed is only {{ field.errors.maxlength.requiredLength }}.</ng-container>

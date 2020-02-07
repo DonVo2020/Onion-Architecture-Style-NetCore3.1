@@ -1,0 +1,22 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer
+               [opened]="!small"
+               class="sidenav mat-elevation-z8 bg-semidark "
+               fixedInViewport="true"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'">
+    <mat-toolbar class="text-white">Menu</mat-toolbar>
+    <mat-nav-list class="nav-list">
+      <a class="menu-item" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" routerLink="/" mat-list-item href="#"><mat-icon>home</mat-icon> &nbsp; Home</a>
+      <a class="menu-item" routerLinkActive="active-link" routerLink="/corporation-list" mat-list-item href="#"><mat-icon>account_circle</mat-icon> &nbsp; Corporation</a>
+      <a class="menu-item" routerLinkActive="active-link" routerLink="/member-list" mat-list-item href="#"><mat-icon>people</mat-icon> &nbsp; Member</a>
+      <a class="menu-item" routerLinkActive="active-link" routerLink="/administration" mat-list-item href="#"><mat-icon>computer</mat-icon> &nbsp; Administration</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="text-white bg-semidark">
+      <span>Onion Architecture Style by Don Vo</span>
+      <span class="example-fill-remaining-space"></span>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
