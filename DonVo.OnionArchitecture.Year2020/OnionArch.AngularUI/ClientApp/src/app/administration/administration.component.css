@@ -1,0 +1,46 @@
+/*.dashboard-card {
+  top: 5px;
+  right: 5px;
+  width: 50%;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  margin: 5px;
+}
+
+.mat-paginator {
+  margin-left: 10px;
+  width: 100%;
+  height: 26px;
+}
+
+.mat-form-field {
+  color: white;
+}*/
+
+.full-width-table {
+  width: 100%;
+}
+.mat-paginator {
+  margin-left: 10px;
+  width: 100%;
+  height: 26px;
+}
+.mat-accordion{
+    margin:10px;
+}
+
+.tilefix {
+  /*position: absolute;*/
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  /*justify-content: space-between;*/
+}

@@ -1,0 +1,136 @@
+<!--<app-admin-body></app-admin-body>-->
+
+<div class="py-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <span class="anchor" id="formLogin"></span>
+
+      <mat-tab-group>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">vpn_key</mat-icon>
+            &nbsp;Login
+          </ng-template>
+          <!-- form card login -->
+          <div class="card rounded-0">
+            <div class="card-header">
+              <h3 class="mb-0">Admin Login</h3>
+            </div>
+            <div class="card-body">
+              <form class="form" #adminForm="ngForm">
+                <div class="form-group"
+                     [class.has-error]="userNameControl.invalid && userNameControl.touched"
+                     [class.has-success]="userNameControl.valid">
+                  <label for="Email" class="control-label">Username</label>
+                  <input type="text" [(ngModel)]="loginAdminData.Email" id="Email" name="Email" class="form-control rounded-0"
+                         #userNameControl="ngModel" required placeholder="Enter Your Email">
+                  <span class="help-block text-danger"
+                        *ngIf="userNameControl.invalid && userNameControl.touched">
+                    Admin Email is Required
+                  </span>
+                </div>
+                <div class="form-group"
+                     [class.has-error]="userPasswordControl.invalid && userPasswordControl.touched"
+                     [class.has-success]="userPasswordControl.valid">
+                  <label for="Password" class="control-label">Password</label>
+                  <input type="Password" [(ngModel)]="loginAdminData.Password" id="Password" name="Password" class="form-control rounded-0"
+                         #userPasswordControl="ngModel" minlength="6" required placeholder="6 characters minimum">
+                  <span class="help-block text-danger"
+                        *ngIf="userPasswordControl.invalid && userPasswordControl.touched">
+                    Admin Password is Required
+                  </span>
+                </div>
+                <div class="alert alert-danger" *ngIf="errorServerMessage != null">
+                  <strong>Danger! {{errorServerMessage}}</strong>
+                </div>
+                <button type="button" (click)="loginAdmin()" [disabled]="adminForm.invalid" class="btn btn-success float-right">Login</button>
+              </form>
+            </div>
+          </div>
+          <!-- /form card login -->
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">archive</mat-icon>
+            &nbsp;Register
+          </ng-template>
+          <!-- form card login -->
+          <div class="card rounded-0">
+            <div class="card-header">
+              <h3 class="mb-0">User Register</h3>
+            </div>
+            <div class="card-body">
+              <form class="form" #studentForm="ngForm">
+
+                <div class="form-group"
+                     [class.has-error]="userFirstNameControl.invalid && userFirstNameControl.touched"
+                     [class.has-success]="userFirstNameControl.valid">
+                  <label for="Firstname" class="control-label">First Name</label>
+                  <input type="text" [(ngModel)]="registerUserData.firstName" id="firstName" name="firstName" class="form-control rounded-0"
+                         #userFirstNameControl="ngModel" required placeholder="Enter Your First Name">
+                  <span class="help-block text-danger"
+                        *ngIf="userFirstNameControl.invalid && userFirstNameControl.touched">
+                    First Name is Required
+                  </span>
+                </div>
+                <div class="form-group"
+                     [class.has-error]="userLastNameControl.invalid && userLastNameControl.touched"
+                     [class.has-success]="userLastNameControl.valid">
+                  <label for="LastName" class="control-label">Last Name</label>
+                  <input type="text" [(ngModel)]="registerUserData.lastName" id="lastName" name="lastName" class="form-control rounded-0"
+                         #userLastNameControl="ngModel" required placeholder="Enter Your Last Name">
+                  <span class="help-block text-danger"
+                        *ngIf="userLastNameControl.invalid && userLastNameControl.touched">
+                    LastName is Required
+                  </span>
+                </div>
+
+
+                <div class="form-group"
+                     [class.has-error]="userNameControl.invalid && userNameControl.touched"
+                     [class.has-success]="userNameControl.valid">
+                  <label for="email" class="control-label">Username</label>
+                  <input type="email" [(ngModel)]="registerUserData.Email" id="email" name="Email" class="form-control rounded-0"
+                         #userNameControl="ngModel" required placeholder="Enter Your Email">
+                  <span class="help-block text-danger"
+                        *ngIf="userNameControl.invalid && userNameControl.touched">
+                    User Email is Required
+                  </span>
+                </div>
+                <div class="form-group"
+                     [class.has-error]="userPasswordControl.invalid && userPasswordControl.touched"
+                     [class.has-success]="userPasswordControl.valid">
+                  <label for="password" class="control-label">Password</label>
+                  <input type="password" [(ngModel)]="registerUserData.Password" id="password" name="Password" class="form-control rounded-0"
+                         #userPasswordControl="ngModel" minlength="6" required placeholder="6 characters minimum">
+                  <span class="help-block text-danger"
+                        *ngIf="userPasswordControl.invalid && userPasswordControl.touched">
+                    User Password is Required
+                  </span>
+                </div>
+                <div class="form-group">
+
+                  <input type="text" [(ngModel)]="registerUserData.Role" id="Role" name="Role"
+                         class="form-control rounded-0" hidden>
+
+                </div>
+                <div class="alert alert-danger" *ngIf="errorServerMessage != null">
+                  <strong>Danger! {{errorServerMessage}}</strong>
+                </div>
+
+                <button type="button" (click)="registerUser()" [disabled]="studentForm.invalid" class="btn btn-primary float-right">Register</button>
+              </form>
+            </div>
+          </div>
+          <!-- /form card login -->
+        </mat-tab>
+
+      </mat-tab-group>
+
+    </div>
+  </div>
+</div>
+
+

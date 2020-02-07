@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="container" cols="2">
+    <mat-card-header class="card-heard">
+      <mat-card-title>{{ isEdit() }} Category</mat-card-title>
+    </mat-card-header>
+    <div class="controls-container">
+      <mat-form-field>
+        <input matInput formControlName="categoryNo" placeholder="Id" />
+        <mat-error>
+          <app-message-error [field]="form.controls.categoryNo" name="categoryNo"></app-message-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="categoryDesc" placeholder="Description" />
+        <mat-error>
+          <app-message-error [field]="form.controls.categoryDesc" name="categoryDesc"></app-message-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="categoryCode" placeholder="Code" />
+        <mat-error>
+          <app-message-error [field]="form.controls.categoryCode" name="categoryCode"></app-message-error>
+        </mat-error>
+      </mat-form-field>
+
+      <app-footer-form [nameForm]="form"
+                       [isFormEdit]="isFormEdit"
+                       (closeForm)="closeDialog()"
+                       (clearForm)="formClear()"
+                       (submitForm)="onSubmit()">
+      </app-footer-form>
+    </div>
+  </div>
+</form>

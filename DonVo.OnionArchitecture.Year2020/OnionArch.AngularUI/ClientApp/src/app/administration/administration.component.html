@@ -1,0 +1,176 @@
+<div class="tilefix">
+  <mat-accordion>
+    <mat-expansion-panel [expanded]='true' [disabled]='false'>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Manage Regions</mat-panel-title>
+      </mat-expansion-panel-header>
+      <!--<mat-form-field>
+        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Region filter">
+      </mat-form-field>-->
+      <table mat-table #sort="matSort" class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+        <ng-container matColumnDef="regionName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let row">{{row.regionName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+          <td mat-cell *matCellDef="let row">{{row.country}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="update">
+          <th mat-header-cell *matHeaderCellDef> Update </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="accent" (click)="openDialog(row)">
+              <mat-icon class="mat-18">system_update</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef> Delete </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="warn" (click)="redirectToDelete(row)">
+              <mat-icon class="mat-18">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)" class="ripple"></tr>
+      </table>
+      <mat-paginator #paginator
+                     [length]="dataSource.data.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 20]">
+      </mat-paginator>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]='true' [disabled]='false'>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Manage Providers</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <input matInput type="text" (keyup)="doFilterProvider($event.target.value)" placeholder="Search">
+      </mat-form-field>
+      &nbsp;&nbsp;
+      <a mat-raised-button color="primary" id="btnAddProvider" (click)="openDialogProvider()">
+        New Provider
+      </a>
+      <table mat-table #sortProvider="matSort" class="full-width-table" [dataSource]="dataSourceProvider" matSort aria-label="Elements">
+        <ng-container matColumnDef="providerName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let row">{{row.providerName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="regionNo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Region</th>
+          <td mat-cell *matCellDef="let row">{{row.regionNo}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="update">
+          <th mat-header-cell *matHeaderCellDef> Update </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="accent" (click)="openDialogProvider(row)">
+              <mat-icon class="mat-18">system_update</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef> Delete </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="warn" (click)="openDialogProviderDelete(row)">
+              <mat-icon class="mat-18">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedProviderColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedProviderColumns;" (click)="selectRow(row)" class="ripple"></tr>
+      </table>
+      <mat-paginator #paginatorProvider
+                     [length]="dataSourceProvider.data.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10,20]">
+      </mat-paginator>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel [expanded]='true' [disabled]='false'>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Manage Categories</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <input matInput type="text" (keyup)="doFilterCategory($event.target.value)" placeholder="Search">
+      </mat-form-field>
+      &nbsp;&nbsp;
+      <a mat-raised-button color="primary" id="btnAddCategory" (click)="openDialogCategory()">
+        New Category
+      </a>
+      <table mat-table #sortCategory="matSort" class="full-width-table" [dataSource]="dataSourceCategory" matSort aria-label="Elements">
+        <ng-container matColumnDef="categoryNo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+          <td mat-cell *matCellDef="let row">{{row.categoryNo}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="categoryDesc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+          <td mat-cell *matCellDef="let row">{{row.categoryDesc}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="categoryCode">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
+          <td mat-cell *matCellDef="let row">{{row.categoryCode}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="update">
+          <th mat-header-cell *matHeaderCellDef> Update </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="accent" (click)="openDialogCategory(row)">
+              <mat-icon class="mat-18">system_update</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef> Delete </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="warn" (click)="openDialogCategoryDelete(row)">
+              <mat-icon class="mat-18">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedCategoryColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedCategoryColumns;" (click)="selectRow(row)" class="ripple"></tr>
+      </table>
+      <mat-paginator #paginatorCategory
+                     [length]="dataSourceCategory.data.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 20]">
+      </mat-paginator>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]='true' [disabled]='false'>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Manage Users</mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
