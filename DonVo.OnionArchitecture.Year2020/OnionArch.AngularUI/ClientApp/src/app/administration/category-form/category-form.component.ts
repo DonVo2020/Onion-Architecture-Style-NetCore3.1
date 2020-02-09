@@ -40,7 +40,7 @@ export class CategoryFormComponent implements OnInit {
   edit() {
     this.form = this._formBuilder.group({
       categoryNo: ['', [Validators.required, Validators.minLength(0)]],
-      categoryDesc: ['', [Validators.required, Validators.maxLength(10)]],
+      categoryDesc: ['', [Validators.required, Validators.maxLength(50)]],
       categoryCode: ['', [Validators.required, Validators.maxLength(10)]]
     });
     if (this._data.data) {

@@ -39,7 +39,7 @@ export class RegionFormComponent implements OnInit {
   edit() {
     this.form = this._formBuilder.group({
       regionNo: ['', [Validators.required, Validators.minLength(0)]],
-      regionName: ['', [Validators.required, Validators.maxLength(10)]],
+      regionName: ['', [Validators.required, Validators.maxLength(20)]],
       street: [''],
       city: [''],
       stateProv: [''],

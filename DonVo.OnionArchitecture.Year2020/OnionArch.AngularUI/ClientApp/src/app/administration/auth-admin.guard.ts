@@ -9,11 +9,11 @@ export class AuthAdminGuard implements  CanActivate{
 
   canActivate(): boolean {
     if (this._authService.loggedInAdmin()) {
-      console.log('true')
+      //console.log('true')
       return true
     } else {
-      console.log('false')            
-      this._router.navigate(['/login'])
+      //console.log('false')            
+      this._router.navigate(['/'])
       return false
     }
   }

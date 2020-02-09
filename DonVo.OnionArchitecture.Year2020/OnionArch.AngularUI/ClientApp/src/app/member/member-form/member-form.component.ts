@@ -46,7 +46,7 @@ export class MemberFormComponent implements OnInit {
   edit() {
     this.form = this._formBuilder.group({
       lastName: ['', [Validators.required, Validators.minLength(0)]],
-      firstName: ['', [Validators.required, Validators.maxLength(10)]],
+      firstName: ['', [Validators.required, Validators.maxLength(20)]],
       Region: [''],
       regionNo: [''],
       street: [''],

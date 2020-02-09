@@ -11,7 +11,9 @@ export class AdminLoginComponent implements OnInit {
 
   errorServerMessage: String = null;
   loginAdminData = { "Role": 1 }
-  registerUserData = { "Role": 1 }
+  registerUserData = { "Role": 5 }
+
+  test: any;
 
 
   constructor(private _auth: AuthService,
@@ -20,25 +22,22 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  loginAdmin () {
+  loginAdmin() {
     this._auth.loginAdmin(this.loginAdminData)
     .subscribe(
       res => {
         localStorage.setItem('token', res.key)
         localStorage.setItem('adminEmail',res.email)
-        this._router.navigate(['/administration'])
+        this._router.navigate(['/home'])
       },
       err =>{
         console.log(err);
         this.errorServerMessage = err.error.message;  
       }
     )
-
-
   }
 
   registerUser() {
-
     this._auth.registerUser(this.registerUserData)
       .subscribe(
         res => {

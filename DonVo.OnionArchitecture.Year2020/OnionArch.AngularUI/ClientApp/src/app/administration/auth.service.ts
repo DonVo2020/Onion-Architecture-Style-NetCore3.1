@@ -5,13 +5,14 @@ import { Router } from '@angular/router'
 @Injectable()
 export class AuthService {
   private _baseUrl ="https://localhost:44353/api/v1/account";
-  private _baseAdminUrl="https://localhost:44370/adminservice";
+  //private _baseAdminUrl="https://localhost:44370/adminservice";
   private _registerUrl = this._baseUrl+"/register";
   private _loginUrl = this._baseUrl+"/login";
   private _registerMentorUrl = this._baseUrl+"/register";
-  private _loginMentorUrl = this._baseUrl+"/login";
+  private _loginDevUrl = this._baseUrl+"/login";
   private _loginAdminUrl = this._baseUrl+"/login";
-  public _blockUserUrl =this._baseAdminUrl+"/blockunblock/";
+  //public _blockUserUrl =this._baseAdminUrl+"/blockunblock/";
+
   constructor(private http: HttpClient,
               private _router: Router) { }
 
@@ -29,19 +30,24 @@ export class AuthService {
     this._router.navigate(['/'])
   }
 
-  registerMentor(user) {
+  registerDev(user) {
     return this.http.post<any>(this._registerMentorUrl, user)
   }
 
-  loginMentor(user) {
-    return this.http.post<any>(this._loginMentorUrl, user)
+  loginDev(user) {
+    return this.http.post<any>(this._loginDevUrl, user)
   }
 
-  logoutMentor() {
+  logoutDev() {
     localStorage.removeItem('token')
-    localStorage.removeItem('mentorEmail')
-    this._router.navigate(['/mentor-login'])
+    localStorage.removeItem('developerEmail')
+    this._router.navigate(['/'])
   }
+
+  //getRoleByEmail(email: string) {
+  //  return this.http.get<any>('https://localhost:44353/api/v1/account/login/' + email);
+  //}
+
 
 
   loginAdmin(user) {
@@ -75,12 +81,12 @@ export class AuthService {
     return localStorage.getItem('userEmail')   
   }
 
-  loggedInMentor() {
+  loggedInDev() {
     return !!localStorage.getItem('token')    
   }
 
-  loggedInMentorName() {
-    return localStorage.getItem('mentorEmail')   
+  loggedInDevName() {
+    return localStorage.getItem('devEmail')   
   }
 
   loggedInAdmin() {
@@ -92,12 +98,13 @@ export class AuthService {
   }
 
   public blockById(id) {
-    return this.http.get<any>(this._blockUserUrl+id)
-      
+    //return this.http.get<any>(this._blockUserUrl+id)
+    return null;
   }
   
   public unBlockById(id) {
-    return this.http.get<any>(this._blockUserUrl+id)
+    //return this.http.get<any>(this._blockUserUrl+id)
+    return null;
   }
 
 }

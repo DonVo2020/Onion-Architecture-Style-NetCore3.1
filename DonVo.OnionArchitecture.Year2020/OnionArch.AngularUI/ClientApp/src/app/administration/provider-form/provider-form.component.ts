@@ -40,7 +40,7 @@ export class ProviderFormComponent implements OnInit {
   edit() {
     this.form = this._formBuilder.group({
       providerNo: ['', [Validators.required, Validators.minLength(0)]],
-      providerName: ['', [Validators.required, Validators.maxLength(10)]],
+      providerName: ['', [Validators.required, Validators.maxLength(20)]],
       regionNo: [''],
       street: [''],
       city: [''],
