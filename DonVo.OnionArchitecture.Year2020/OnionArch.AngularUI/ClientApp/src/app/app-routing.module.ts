@@ -14,8 +14,9 @@ import { AuthAdminGuard } from './administration/auth-admin.guard';
 
 
 const routes: Routes = [
-  //{ path: '', component: HomeComponent },
-  { path: '', canActivate: [AuthAdminGuard],component: AdminLoginComponent },
+ 
+  { path: '', component: AdminLoginComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'member-list', canActivate: [AuthAdminGuard],component: MemberListComponent },
   { path: 'member/new', canActivate: [AuthAdminGuard],component: MemberFormComponent },
   { path: 'corporation-list', canActivate: [AuthAdminGuard], component: CorporationListComponent },

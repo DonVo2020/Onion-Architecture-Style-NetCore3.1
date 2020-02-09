@@ -14,8 +14,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MemberListComponent } from './member/member-list/member-list.component';
 import { MemberFormComponent } from './member/member-form/member-form.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-//import { HomeComponent } from './home/home.component';
+import { SideMapComponent } from './side-map/side-map.component';
+import { HomeComponent } from './home/home.component';
 import { AdminLoginComponent } from './administration/admin-login/admin-login.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { CorporationListComponent } from './corporation/corporation-list/corporation-list.component';
@@ -27,11 +27,13 @@ import { AuthService } from './administration/auth.service';
 import { TokenInterceptorService } from './administration/token-interceptor.service';
 import { AuthAdminGuard } from './administration/auth-admin.guard';
 
+import { CarouselDirective } from './shared/directives/carousel.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    //HomeComponent,
+    SideMapComponent,
+    HomeComponent,
     AdminLoginComponent,
     MemberListComponent,
     MemberFormComponent,
@@ -41,6 +43,7 @@ import { AuthAdminGuard } from './administration/auth-admin.guard';
     RegionFormComponent,
     CategoryFormComponent,
     ProviderFormComponent,
+    CarouselDirective,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
